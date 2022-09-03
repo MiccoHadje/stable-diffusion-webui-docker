@@ -11,7 +11,7 @@ RUN conda env update --file stable-diffusion/environment.yaml --name base && con
 RUN conda install -c anaconda pillow==9.2.0 && conda clean -a -y
 
 
-SHELL ["/bin/bash", "-ceuxo", "pipefail"]
+SHELL ["//bin/bash", "-ceuxo", "pipefail"]
 
 # fonts for generating the grid
 RUN apt-get update && apt install fonts-dejavu-core rsync -y && apt-get clean
@@ -61,4 +61,4 @@ WORKDIR /stable-diffusion
 ENV TRANSFORMERS_CACHE=/cache/transformers TORCH_HOME=/cache/torch CLI_ARGS=""
 EXPOSE 7860
 # run, -u to not buffer stdout / stderr
-CMD /docker/mount.sh && python3 -u scripts/webui.py --outdir /output --ckpt /models/model.ckpt --ldsr-dir /latent-diffusion --save-metadata ${CLI_ARGS}
+CMD /docker/mount.sh && python3 -u scripts/webui.py --outdir /output --ckpt ../models/sd-v1-4-full-ema.ckpt --ldsr-dir /latent-diffusion --save-metadata ${CLI_ARGS}
