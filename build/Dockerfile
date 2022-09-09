@@ -59,4 +59,4 @@ WORKDIR /stable-diffusion
 ENV TRANSFORMERS_CACHE=/cache/transformers TORCH_HOME=/cache/torch CLI_ARGS=""
 EXPOSE 7860
 # run, -u to not buffer stdout / stderr
-CMD /docker/mount.sh && python3 -u scripts/webui.py --outdir /output --ckpt ../models/sd-v1-4-full-ema.ckpt --ldsr-dir /latent-diffusion ${CLI_ARGS}
+/docker/mount.sh && python3 -u scripts/webui.py --outdir /output --ckpt ../models/sd-v1-4-full-ema.ckpt --ldsr-dir /latent-diffusion ${CLI_ARGS}
