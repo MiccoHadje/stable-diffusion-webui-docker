@@ -1,8 +1,15 @@
-﻿# Stable Diffusion WebUI Docker
+# Stable Diffusion WebUI Docker
 
 Run Stable Diffusion on your machine with a nice UI without any hassle!
 
-This repository provides the [WebUI](https://github.com/hlky/stable-diffusion-webui) as a docker image for easy setup and deployment. Please note that the WebUI is experimental and evolving quickly, so expect some bugs.
+This repository provides the [WebUI](https://github.com/hlky/stable-diffusion-webui) as a docker image for easy setup and deployment.
+
+Now with experimental support for 2 other forks:
+
+- [AUTOMATIC1111](./AUTOMATIC1111/) (Stable, very few bugs!)
+- [lstein](./lstein/)
+
+NOTE: big update coming up!
 
 ## Features
 
@@ -10,7 +17,6 @@ This repository provides the [WebUI](https://github.com/hlky/stable-diffusion-we
 - Support for 6GB GPU cards.
 - GFPGAN for face reconstruction, RealESRGAN for super-sampling.
 - Experimental:
-  - [Textual Inversion](https://github.com/hlky/sd-enable-textual-inversion)
   - Latent Diffusion Super Resolution
   - GoBig
   - GoLatent
@@ -57,15 +63,15 @@ Will start the app on http://localhost:7860/
 
 Note: the first start will take sometime as some other models will be downloaded, these will be cached in the `cache` folder, so next runs are faster.
 
-## Config
-
-in the `docker-compose.yml` you can change the `CLI_ARGS` variable, which contains the arguments that will be passed to the WebUI. By default: `--extra-models-cpu --optimized-turbo` are given, which allow you to use this model on a 6GB GPU. However, some features might not be available in the mode.
-
-[You can find the full list of arguments here.](https://github.com/hlky/stable-diffusion/blob/d667ff52a36b4e79526f01555bfbf85428f334ce/scripts/webui.py)
-
 ### FAQ
 
-You can find fixes to common issues [in the wiki page.](https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Main)
+You can find fixes to common issues [in the wiki page.](https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/FAQ)
+
+## Config
+
+in the `docker-compose.yml` you can change the `CLI_ARGS` variable, which contains the arguments that will be passed to the WebUI. By default: `--extra-models-cpu --optimized-turbo` are given, which allow you to use this model on a 6GB GPU. However, some features might not be available in the mode. [You can find the full list of arguments here.](https://github.com/hlky/stable-diffusion-webui/blob/2b1ac8daf7ea82c6c56eabab7e80ec1c33106a98/scripts/webui.py)
+
+You can set the `WEBUI_SHA` to [any SHA from the main repo](https://github.com/hlky/stable-diffusion/commits/main), this will build the container against that commit. Use at your own risk.
 
 # Disclaimer
 
@@ -79,4 +85,7 @@ Special thanks to everyone behind these awesome projects, without them, none of 
 
 - [hlky/stable-diffusion-webui](https://github.com/hlky/stable-diffusion-webui)
 - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
+- [lstein/stable-diffusion](https://github.com/lstein/stable-diffusion)
 - [CompVis/stable-diffusion](https://github.com/CompVis/stable-diffusion)
+- [hlky/sd-enable-textual-inversion](https://github.com/hlky/sd-enable-textual-inversion)
+- [devilismyfriend/latent-diffusion](https://github.com/devilismyfriend/latent-diffusion)
